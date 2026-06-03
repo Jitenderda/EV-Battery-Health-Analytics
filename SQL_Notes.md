@@ -440,7 +440,7 @@ ___________________________________________________________________
 ### 1. What I Do Today
 	   Today i Started phase 1 of the project queries.
 	   I work on 3 business queries on SOH(State of Health)
-	   In Query 1 I use  aggregate functions like COUNT, AVG, MIN, MAX. & group by to get categorised results by battery type which LFP & 	   NMC
+	   In Query 1 I use  aggregate functions like COUNT, AVG, MIN, MAX. & group by to get categorised results by battery type which LFP & NMC
 	   In Query 2 I use joins & ISNULL, Group by & order by use get the result grouped by Manufacturer_Country. 
 	   IN Query 3 I use logical filtering using where & order by to get result according to our filter like we use in where clause.
 ### 2. Key Rules / Points
