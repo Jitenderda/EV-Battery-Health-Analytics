@@ -444,31 +444,34 @@ ___________________________________________________________________
 	   In Query 2 I use joins & ISNULL, Group by & order by use get the result grouped by Manufacturer_Country. 
 	   IN Query 3 I use logical filtering using where & order by to get result according to our filter like we use in where clause.
 ### 2. Key Rules / Points
-	-  
-	-
-	-   
+	-  Using USE EV_Projects; and GO at the top of the script so it runs on the correct database automatically.
+	-  Adding clean header comments to explain what each business query does. 
+	-  The literal rule of SQL logic: having to write out the column name on both sides of an OR operator (like Battery_Status IN ('Critical', 'Warning') and Battery_Status = 'Critical' OR Battery_Status = 'Warning').
+	
 ### 3. Example Query I Wrote
 ```sql
-SELECT Vehicle_ID, Battery_Type, SoH_Percent,
-RANK() OVER (PARTITION BY Battery_Type ORDER BY SoH_Percent DESC) AS SoH_Rank,
-DENSE_RANK() OVER (PARTITION BY Battery_Type ORDER BY SoH_Percent DESC) AS SoH_Dense_Rank
-FROM dbo.ev_battery_data;
+SELECT
+ISNULL(t2.Manufacturer_Country, 'UNKNOWN') AS Manufacturer_Country,
+COUNT(t1.Vehicle_ID) AS Vehicle_Count,
+ROUND(AVG(t1.SoH_Percent), 2) AS Avg_SoH_Percent
+FROM dbo.ev_battery_data t1
+FULL OUTER JOIN dbo.car_info AS t2
+ON t1.Car_Model = t2.Car_Model
+GROUP BY Manufacturer_Country
+ORDER BY Avg_SoH_Percent DESC;
 ```
 Result:
-		010f3c9c	LFP	100	1	1
-		03c9d3b3	LFP	100	1	1
-		03dae574	LFP	100	1	1
-		0503f12d	LFP	100	1	1
-		0865a965	LFP	100	1	1
-		098af993	LFP	100	1	1
-		09f3058e	LFP	100	1	1
-		0ce9bca1	LFP	100	1	1
-		0dc4373b	LFP	100	1	1
-		0fc77b1d	LFP	100	1	1
+		China	3980	96.95
+USA	4017	95.05
+South Korea	2003	95.04
+UNKNOWN	1	95
+Japan	0	NULL
 
 ### 4. What Confused Me
-	   Where to use window function like RANK in query, before FROM or After From.
+	   WHERE (SoH_Percent < 90 AND Vehicle_Age_Months > 24) OR (Battery_Status = 'Critical' or 'Warning')
+	   I Confused in whare clause where check for battery status is it Critical or Warning, I wrote the query wrong way, that result in a confussion
 ### 6. How It Got Cleared
-	   I Explore a bit & identify it works when used above FROM Clause. as query runs perfectly the confussion cleared. 	
+	   WHERE (SoH_Percent < 90 AND Vehicle_Age_Months > 24) OR (Battery_Status IN ('Critical', 'Warning'))
+	   Learn a more to correct the query & the result clear the confussion.
 ### 7. Real-World Use In My Project
-	   We will use windows function when ever need to rank the result with RANK OR ROW_NUMBER OR DENSE_RANK	   
+	   what we wrote in Query 1 helped us prove that LFP batteries hold health better than NMC in the project	   
