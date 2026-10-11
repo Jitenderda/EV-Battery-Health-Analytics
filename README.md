@@ -156,7 +156,7 @@ GO
 ## 📬 Author
 
 **Jitender Maan** — Data Analyst (in transition from MIS Executive)
-🌐 [Portfolio](https://jitenderda.github.io) · 💼 [LinkedIn](https://www.linkedin.com/in/jitender.da) · 
+🌐 [Portfolio](https://jitenderda.github.io) · 💼 [LinkedIn](https://www.linkedin.com/in/jitender-da) · 
 📍 Sonipat, Haryana
 
 *Open to Data Analyst opportunities — remote or hybrid.*
