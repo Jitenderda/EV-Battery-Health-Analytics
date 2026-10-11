@@ -2,7 +2,7 @@
 
 ## About Me
 - Name: Jitender Maan
-- GitHub: github.com/Jitender-Maan
+- GitHub: github.com/Jitenderda
 - Daily project time: 1-2 hours
 
 ## Skill Level (Honest)
@@ -12,7 +12,7 @@
 
 ## Project Details
 - **Title:** Predictive Battery Health Analytics for Electric Vehicles
-- **Repo:** https://github.com/Jitender-Maan/EV-Battery-Health-Analytics-
+- **Repo:** https://github.com/Jitenderda/EV-Battery-Health-Analytics-
 - **Dataset:** EV Battery Degradation & Charge (Kaggle)
 - **Rows:** 10,000
 - **Columns:** 13
