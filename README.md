@@ -58,6 +58,11 @@ This project uses 10,000 vehicle records across 6 EV models to answer:
 ├── Project_Context.md                # Project context, skill level, progress
 ├── Project_Schedule.md               # 4-phase roadmap
 ├── .gitignore                        # Ignore rules for Python, OS and env files
+├── data/                             # Dataset notes (no data files committed)
+├── notebooks/                        # Phase 2 — Python EDA notebooks
+├── dashboard/                        # Phase 3 — Power BI report files
+├── reports/                          # Phase 4 — business report
+├── screenshots/                      # Visual evidence for the portfolio
 └── README.md                         # You are here
 ```
 
