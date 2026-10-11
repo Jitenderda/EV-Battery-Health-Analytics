@@ -57,6 +57,7 @@ This project uses 10,000 vehicle records across 6 EV models to answer:
 ├── SQL_Notes.md                      # Concept notes written day by day
 ├── Project_Context.md                # Project context, skill level, progress
 ├── Project_Schedule.md               # 4-phase roadmap
+├── .gitignore                        # Ignore rules for Python, OS and env files
 └── README.md                         # You are here
 ```
 
