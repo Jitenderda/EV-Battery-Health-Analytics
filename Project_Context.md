@@ -12,7 +12,7 @@
 
 ## Project Details
 - **Title:** Predictive Battery Health Analytics for Electric Vehicles
-- **Repo:** https://github.com/Jitenderda/EV-Battery-Health-Analytics-
+- **Repo:** https://github.com/Jitenderda/EV-Battery-Health-Analytics
 - **Dataset:** EV Battery Degradation & Charge (Kaggle)
 - **Rows:** 10,000
 - **Columns:** 13
