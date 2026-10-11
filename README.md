@@ -1,193 +1,89 @@
-# 🔋 EV Battery Health Analytics
+# EV Battery Health Analytics
 
-### Predicting State of Health (SoH) and identifying degradation drivers across 6 EV models — informing fleet maintenance, warranty, and inspection priorities.
+Analysis of 10,000 EV battery records to understand what drives battery degradation, and which vehicles a fleet operator should inspect first.
 
-[![SQL](https://img.shields.io/badge/SQL%20Server-CC2927?logo=microsoftsqlserver&logoColor=white)]()
-[![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)]()
-[![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?logo=powerbi&logoColor=black)]()
-[![Status](https://img.shields.io/badge/Status-Phase%201%20In%20Progress-yellow)]()
+I built this to practise end-to-end analytics: SQL Server for the analysis, then Python for exploration, then Power BI for the dashboard.
 
----
+## The problem
 
-## 🎯 Business Problem
+EV batteries lose capacity as they age and as they are used. How much they lose depends on how the vehicle is charged and driven: how often it is fast charged, how hot the battery runs, how many charge cycles it has done.
 
-EV fleet operators and OEMs face two costly challenges:
+Most fleet operators inspect every vehicle on the same schedule. Vehicles that get used gently get inspected too often, and hard-used ones may not get looked at soon enough. I want to see whether the data can point to the vehicles that are actually at risk, so inspections can be prioritised.
 
-1. **Reactive maintenance** — batteries fail before being flagged, leading to vehicle downtime and warranty claims.
-2. **Generic inspection schedules** — every vehicle is inspected on the same cadence, regardless of actual usage stress.
+## Tools
 
-This project uses 10,000 vehicle records across 6 EV models to answer:
+- SQL Server (SSMS) - analysis
+- Python (pandas, scikit-learn) - exploratory analysis, phase 2
+- Power BI - dashboard, phase 3
 
-- **Which vehicles should be prioritized for inspection NOW?**
-- **What usage patterns predict battery degradation?**
-- **Which model/battery-type combinations are most resilient?**
+## The data
 
----
+Source: EV Battery Degradation & Charge, found on Kaggle.
 
-## 📌 Project Status
+10,000 rows and 13 columns, covering six EV models: Tesla Model 3, Ford Mustang Mach-E, BYD Atto 3, Wuling Air EV, Hyundai Ioniq 5 and Kia EV6. The batteries are either LFP or NMC chemistry. The column I am working with most is SoH_Percent, the battery's State of Health.
 
-| Phase | Focus | Status |
-|---|---|---|
-| **1. SQL Foundation** | Database design + analytical queries in SSMS | 🔨 **In progress — Day 13 of 14** |
-| 2. Python EDA | Cleaning, visualization, feature importance | ⬜ Upcoming |
-| 3. Power BI Dashboard | 3-page interactive report with DAX | ⬜ Upcoming |
-| 4. Documentation | README rebuild, screenshots, portfolio post | ⬜ Upcoming |
+I also created a small lookup table called car_info, which maps each model to its manufacturer country, so I could practise joins.
 
-**Current position:** Phase 1 — queries 1–3 complete, queries 4–12 in progress.
+One decision worth explaining. Battery_Status could be treated as a classification target, but nearly every vehicle in the data is labelled Healthy. The classes are far too imbalanced for that to work, so I am treating this as a regression problem on SoH_Percent instead.
 
----
+## Progress
 
-## 🛠️ Tools & Stack
+Phase 1 started on 18 May and is still running. 3 of 12 queries are written.
 
-| Layer | Tool |
-|---|---|
-| **Database** | Microsoft SQL Server (SSMS) |
-| **Querying** | T-SQL (CASE WHEN, JOINs, GROUP BY, HAVING, subqueries, window functions) |
-| **EDA & Modeling** *(Phase 2)* | Python (pandas, scikit-learn) — Google Colab |
-| **Dashboard** *(Phase 3)* | Power BI Desktop with DAX |
-| **Documentation** | Markdown, GitHub |
+| Phase | What | Status |
+| --- | --- | --- |
+| 1. SQL | Analytical queries in SSMS | In progress |
+| 2. Python EDA | Distributions, correlations, feature importance | Not started |
+| 3. Power BI | Three page dashboard | Not started |
+| 4. Documentation | Report and portfolio write up | Not started |
 
----
+## What I have found so far
 
-## 🗂️ Repo Structure
+### Battery chemistry
 
-```
-.
-├── EV-Battery-Health-queries.sql     # Project queries (Phase 1)
-├── SQL_Notes.md                      # Concept notes written day by day
-├── Project_Context.md                # Project context, skill level, progress
-├── Project_Schedule.md               # 4-phase roadmap
-├── .gitignore                        # Ignore rules for Python, OS and env files
-├── data/                             # Dataset notes (no data files committed)
-├── notebooks/                        # Phase 2 — Python EDA notebooks
-├── dashboard/                        # Phase 3 — Power BI report files
-├── reports/                          # Phase 4 — business report
-├── screenshots/                      # Visual evidence for the portfolio
-└── README.md                         # You are here
-```
+LFP batteries hold their health better than NMC in this data. Average SoH is 96.95% for LFP against 95.05% for NMC. LFP also runs at lower internal resistance, 0.0261 against 0.0349.
 
----
+### Manufacturer country
 
-## 📐 Dataset Overview
+China leads on average SoH at 96.95%, followed by the USA at 95.05% and South Korea at 95.04%.
 
-- **Source:** [Electric Vehicle (EV) Battery Degradation & Charge](https://www.kaggle.com/datasets/bertnardomariouskono/electric-vehicle-ev-battery-degradation-and-charge) (Kaggle)
-- **Rows:** 10,000 vehicle records | **Columns:** 13
-- **Models covered:** Tesla Model 3, Ford Mustang Mach-E, BYD Atto 3, Wuling Air EV, Hyundai Ioniq 5, Kia EV6
-- **Chemistries:** LFP (Lithium Iron Phosphate) and NMC (Nickel Manganese Cobalt)
-- **Key columns:** `SoH_Percent` (target), `Battery_Type`, `Vehicle_Age_Months`, `Total_Charging_Cycles`, `Avg_Temperature_C`, `Fast_Charge_Ratio`, `Driving_Style`, `Internal_Resistance_Ohm`
-- **Lookup table:** `dbo.car_info` — maps `Car_Model` → `Manufacturer_Country`, `Launch_Year`
+While writing this query I found a data quality problem. Kia EV6 appears in the battery data but has no matching row in the country lookup table, so it comes back as UNKNOWN. Nissan Leaf and Rivian R1T are in the lookup table but have no vehicles in the battery data at all.
 
-**Why regression (not classification):** `Battery_Status` is heavily imbalanced — almost every vehicle is labelled Healthy. `SoH_Percent` gives a continuous target instead.
+### Vehicles needing inspection
 
----
+I wrote a query to pull out vehicles that look like priority cases: SoH below 90% and older than 24 months, or flagged as Critical or Warning. It returned 605 vehicles, sorted worst first.
 
-## 🔬 Methodology
+### Other things I noticed while practising
 
-### Phase 1 — SQL Foundation 🔨 *(in progress)*
+- Wuling Air EV has the highest average SoH of any model, at 96.99%
+- 267 vehicles show both high temperature exposure and a high discharge rate
+- 778 Tesla Model 3s are either older than 60 months or past 800 charge cycles
+- Battery health splits 9,390 Healthy, 609 Warning, 1 Critical. The single Critical battery sits in the heavy usage group
+- 182 LFP vehicles tie at exactly 100% SoH, which turned out to be a good way to see the difference between RANK and DENSE_RANK
 
-- Imported & validated 10,000 rows in SSMS
-- Built segmentation logic (Healthy / Warning / Critical) using `CASE WHEN`
-- Identified usage tiers (Light / Moderate / Heavy)
-- Cross-tabulated risk tiers with model + battery type to surface the findings below
-- Created a `car_info` lookup table and joined it to analyse manufacturer country
-- Writing business queries to `EV-Battery-Health-queries.sql`
+## Running this yourself
 
-### Phase 2 — Python EDA *(upcoming)*
-- Distribution analysis on SoH_Percent
-- Correlation matrix: usage variables vs. degradation
-- Feature importance via Random Forest (interpretability)
-- Validate SQL findings with statistical tests
+1. Download the dataset from Kaggle (link above)
+2. Create a database in SSMS called EV_Projects
+3. Import the CSV into dbo.ev_battery_data
+4. Create dbo.car_info with the columns Car_Model, Manufacturer_Country and Launch_Year
+5. Run the queries in EV-Battery-Health-queries.sql in order
 
-### Phase 3 — Power BI Dashboard *(upcoming)*
-- 3-page report: Fleet KPIs / Risk Tiers / Model Comparison
-- DAX measures for SoH%, risk counts, time-to-replacement estimates
-- Drill-through to vehicle-level detail
+## What I learned
 
-### Phase 4 — Documentation *(upcoming)*
-- Rebuild this README with final results and screenshots
-- LinkedIn portfolio post with insight carousel
+SQL aggregations and CASE WHEN do more of the work than I expected. Most of the segmentation I thought I would need Power BI for was fine inside the query.
 
----
+The imbalanced target also taught me something. My first instinct was to build a classifier, but starting with the data rather than the technique saved me from weeks of dead ends.
 
-## 📊 Findings So Far
+## Limitations
 
-### Project queries (saved in `EV-Battery-Health-queries.sql`)
+The data is a single snapshot, so I cannot track how any individual battery degrades over time. There is only one Critical battery, which is too few to build anything on. There is also no maintenance cost data, so I have not made any claims about savings.
 
-**Query 1 — Battery chemistry performance**
+## About me
 
-| Battery Type | Vehicles | Avg SoH | Avg Internal Resistance |
-|---|---|---|---|
-| NMC | 6,021 | 95.05% | 0.0349 Ω |
-| LFP | 3,980 | 96.95% | 0.0261 Ω |
+Jitender Maan, Data Analyst. Based in Sonipat, Haryana.
 
-*Takeaway: LFP holds health better and runs at lower internal resistance than NMC.*
+Portfolio: https://jitenderda.github.io
+LinkedIn: https://www.linkedin.com/in/jitender-da
 
-**Query 2 — Manufacturer country** *(FULL OUTER JOIN + ISNULL)*
-
-| Country | Vehicles | Avg SoH |
-|---|---|---|
-| China | 3,980 | 96.95% |
-| USA | 4,017 | 95.05% |
-| South Korea | 2,003 | 95.04% |
-| UNKNOWN | 1 | 95.00% |
-| Japan | 0 | — |
-
-*Data-quality finding: Kia EV6 exists in the battery data but has no matching row in the country lookup — labelled `UNKNOWN`. Nissan Leaf and Rivian R1T exist in the lookup but have no vehicles in the data.*
-
-**Query 3 — High-risk vehicles for inspection**
-- Rule: `(SoH_Percent < 90 AND Vehicle_Age_Months > 24) OR Battery_Status IN ('Critical','Warning')`
-- Result: **605 priority rows**, sorted by lowest health first
-
-### Exploratory findings (from SQL practice sessions)
-
-- 🏆 **Wuling Air EV leads on battery health** — average SoH of **96.99%**, highest of the models analysed
-- 🚨 **267 vehicles flagged "stressed"** — high temperature exposure + high discharge rate. Next inspection priority.
-- 🚨 **778 Tesla Model 3s at risk** — meet either condition: age > 60 months OR > 800 charging cycles. A concrete warranty-watch list.
-- 📊 **SoH-based segmentation:** 9,390 Healthy / 609 Warning / 1 Critical
-- 🔥 **The only Critical battery sits in the Heavy-usage segment** — usage intensity drives end-of-life risk more than age alone
-- 🔬 **182 LFP vehicles tie at exactly 100% SoH** — a clean real-world case of `RANK()` skipping 1 → 183 while `DENSE_RANK()` moves 1 → 2
-
----
-
-## 💻 How to Reproduce
-
-```sql
--- 1. Download the dataset from Kaggle:
---    https://www.kaggle.com/datasets/bertnardomariouskono/electric-vehicle-ev-battery-degradation-and-charge
-
--- 2. Create the database in SSMS
-CREATE DATABASE EV_Projects;
-GO
-USE EV_Projects;
-GO
-
--- 3. Import the CSV → dbo.ev_battery_data
--- 4. Create dbo.car_info (Car_Model, Manufacturer_Country, Launch_Year)
--- 5. Run the queries in EV-Battery-Health-queries.sql in order
-```
-
----
-
-## 🧠 What I Learned
-
-- **Technical:** SQL aggregations + `CASE WHEN` handle most segmentation work normally pushed into BI tools — keeping logic close to the data.
-- **Analytical:** Imbalanced targets force you to reframe the problem — switching from classification to regression was the right call here.
-- **Data quality:** Outer joins are how you *find* broken reference data, not just avoid it. The Kia EV6 gap only became visible through a FULL OUTER JOIN.
-- **Business:** The most useful output isn't a model — it's *named segments* (the 267 stressed vehicles, the 778 at-risk Teslas) that an ops team can act on tomorrow.
-
----
-
-## 🚧 Limitations & Next Steps
-
-- **Limitations:** Single-snapshot dataset (no temporal degradation tracking); the Critical class is extremely rare (n=1); no maintenance-cost data, so no ROI claims are made.
-- **Next:** Finish Phase 1 queries, then Phase 2 Python EDA to confirm the SQL findings statistically, then Phase 3 Power BI for stakeholder-ready visuals.
-
----
-
-## 📬 Author
-
-**Jitender Maan** — Data Analyst (in transition from MIS Executive)
-🌐 [Portfolio](https://jitenderda.github.io) · 💼 [LinkedIn](https://www.linkedin.com/in/jitender-da) ·
-📍 Sonipat, Haryana
-
-*Open to Data Analyst opportunities — remote or hybrid.*
+Open to Data Analyst roles, remote or hybrid.
