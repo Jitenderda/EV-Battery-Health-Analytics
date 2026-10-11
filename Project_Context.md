@@ -152,7 +152,7 @@ Day 5 was completed on 22-05-2026
 
 EV Battery Health Analytics — New Chat Summary
 User: Jitender Maan
-Repo: EV-Battery-Health-Analytics-
+Repo: EV-Battery-Health-Analytics
 Current Phase: Phase 1 — SQL
 Tool: SSMS
 Database: EV_Projects
@@ -294,7 +294,7 @@ Day 6 was completed on 23-05-2026
 
 EV Battery Health Analytics — New Chat Summary
 User: Jitender Maan
-Repo: EV-Battery-Health-Analytics-
+Repo: EV-Battery-Health-Analytics
 Current Phase: Phase 1 — SQL
 Tool: SSMS
 Database: EV_Projects
@@ -361,7 +361,7 @@ Day 7 was completed on 25-05-2026
 
 EV Battery Health Analytics — New Chat Summary
 User: Jitender Maan
-Repo: EV-Battery-Health-Analytics-
+Repo: EV-Battery-Health-Analytics
 Current Phase: Phase 1 — SQL
 Tool: SSMS
 Database: EV_Projects
@@ -428,7 +428,7 @@ Day 8 was completed on 26-05-2026
 
 EV Battery Health Analytics — New Chat Summary
 User: Jitender Maan
-Repo: EV-Battery-Health-Analytics-
+Repo: EV-Battery-Health-Analytics
 Current Phase: Phase 1 — SQL
 Tool: SSMS
 Database: EV_Projects
@@ -491,7 +491,7 @@ Day 9 was completed on 27-05-2026
 
 EV Battery Health Analytics — New Chat Summary
 User: Jitender Maan
-Repo: EV-Battery-Health-Analytics-
+Repo: EV-Battery-Health-Analytics
 Current Phase: Phase 1 — SQL
 Tool: SSMS
 Database: EV_Projects
@@ -554,7 +554,7 @@ Day 10 was completed on 28-05-2026
 
 EV Battery Health Analytics — New Chat Summary
 User: Jitender Maan
-Repo: EV-Battery-Health-Analytics-
+Repo: EV-Battery-Health-Analytics
 Current Phase: Phase 1 — SQL
 Tool: SSMS
 Database: EV_Projects
@@ -615,7 +615,7 @@ Day 11 was completed on 29-05-2026
 
 EV Battery Health Analytics — New Chat Summary
 User: Jitender Maan
-Repo: EV-Battery-Health-Analytics-
+Repo: EV-Battery-Health-Analytics
 Current Phase: Phase 1 — SQL
 Tool: SSMS
 Database: EV_Projects
