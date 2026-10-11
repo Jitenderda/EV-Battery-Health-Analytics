@@ -3,7 +3,7 @@
 ---
 ## Day 1 — Aggregate Functions
 
-**Date:** 19-05-2026
+**Date:** 18-05-2026
 
 ### 1. What I Learned Today
 Today, I learned about Aggregate functions in SQL
@@ -31,7 +31,7 @@ I use Count(*) to count total rows to confirm that the data imported properly.
 ___________________________________________________________________
 
 ## Day 2 — Aggregation and Sorting
-**Date:** 19-02-2026
+**Date:** 19-05-2026
 
 ### 1. What I Learned Today
 Today i learned Group By & Order By Clauses, Also pactice on AVG, Count Functions.
@@ -435,7 +435,7 @@ ___________________________________________________________________
 	   
 ## Day 12 — Business questions on SoH
 
-**Date:** 29-05-2026
+**Date:** 30-05-2026
 
 ### 1. What I Do Today
 	   Today i Started phase 1 of the project queries.
