@@ -1,93 +1,88 @@
-📅 EV Battery Project — Complete Schedule
-Daily Slot: 9:30 AM – 11:30 AM (Mon–Sat) | Off: Sundays
+📅 EV Battery Project — Schedule & Progress
 
-🟦 PHASE 1 — SQL (Days 1–14)
+**Daily slot:** 9:30 AM – 11:30 AM (Mon–Sat) | Sundays off
+**Current position:** Phase 1 — Day 13 (Charging behavior analysis)
+**Last updated:** 12-10-2026
 
-~~Day 1 — 18-05-2026 (Mon) | 9:30–10:30 AM: Learn COUNT, SUM, AVG, MIN, MAX | 10:30–11:30 AM: Practice + Notes~~
+---
 
-~~Day 2 — 19-05-2026 (Tue) | 9:30–10:30 AM: Learn grouping & sorting | 10:30–11:30 AM: Practice + Notes~~
+## 📍 Where I Am Right Now
 
-~~Day 3 — 20-05-2026 (Wed) | 9:30–10:30 AM: Filter rows vs groups | 10:30–11:30 AM: Practice + Notes~~
+| | |
+|---|---|
+| **Phase** | 1 of 4 — SQL |
+| **Current day** | Day 13 — Queries 4–7 |
+| **Next action** | Query 4 — Fast charging impact on battery health |
+| **SQL file** | EV-Battery-Health-queries.sql |
 
-~~Day 4 — 21-05-2026 (Thu) | 9:30–10:30 AM: Logical operators | 10:30–11:30 AM: Practice + Notes~~
+---
 
-~~Day 5 — 22-05-2026 (Fri) | 9:30–10:30 AM: Conditional categories | 10:30–11:30 AM: Practice + Notes~~
+## ✅ Completed
 
-~~Day 6 — 23-05-2026 (Sat) | 9:30–10:30 AM: INNER JOIN concept | 10:30–11:30 AM: Practice + Notes~~
+**Days 1–11 — SQL Bootcamp** (18-05 → 29-05-2026)
+Aggregates · GROUP BY / ORDER BY · HAVING vs WHERE · AND / OR / Parentheses ·
+CASE WHEN · INNER JOIN · LEFT / RIGHT / FULL JOIN · ISNULL / COALESCE ·
+Subqueries · Window Functions
 
-~~— — 24-05-2026 (Sun) | 🛌 OFF — Rest Day~~
+→ Full notes: **SQL_Notes.md**
 
-~~Day 7 — 25-05-2026 (Mon) | 9:30–10:30 AM: LEFT/RIGHT/FULL JOIN | 10:30–11:30 AM: Practice + Notes~~
+**Day 12 — Project Queries 1–3** ✅
+- Query 1 — Battery chemistry (LFP vs NMC)
+- Query 2 — Country origin (FULL OUTER JOIN + ISNULL)
+- Query 3 — High-risk vehicles (605 rows)
 
-~~Day 8 — 26-05-2026 (Tue) | 9:30–10:30 AM: Learn ISNULL & COALESCE with practice | 10:30–11:30 AM: Practice + Notes~~
+→ Queries saved in **EV-Battery-Health-queries.sql**
 
-~~Day 9 — 27-05-2026 (Wed) | 9:30–10:30 AM: Nested queries basics | 10:30–11:30 AM: Practice + Notes~~
+---
 
-~~Day 10 — 28-05-2026 (Thu) | 9:30–10:30 AM: Advanced nested queries | 10:30–11:30 AM: Practice + Notes~~
+## 🔨 Active — Phase 1 (Days 13–14)
 
-~~Day 11 — 29-05-2026 (Fri) | 9:30–10:30 AM: ROW_NUMBER, RANK | 10:30–11:30 AM: Practice + Notes~~
+**Day 13 — Charging behavior analysis**
+- Queries 4–7 → fast charging impact · temperature stress · cycle bands · combined stress
+- Output: new queries appended to EV-Battery-Health-queries.sql
 
-Day 12 — 30-05-2026 (Sat) | 9:30–10:30 AM: Business questions on SoH | 10:30–11:30 AM: Write to project_queries.sql
+**Day 14 — Final SQL analysis**
+- Queries 8–12 → commit Phase 1 to GitHub
 
-— — 31-05-2026 (Sun) | 🛌 OFF — Rest Day
+---
 
-Day 13 — 01-06-2026 (Mon) | 9:30–10:30 AM: Charging behavior analysis | 10:30–11:30 AM: Write to project_queries.sql
+## ⬜ Upcoming
 
-Day 14 — 02-06-2026 (Tue) | 9:30–10:30 AM: Final SQL analysis | 10:30–11:30 AM: Commit Phase 1 to GitHub
+### Phase 2 — Python EDA (Days 15–24) | 10 sessions
+- Day 15 — Setup + upload CSV | Pandas basics
+- Day 16 — Handle missing values | df.info(), df.describe()
+- Day 17 — groupby, sort, filter | Practice
+- Day 18 — Bar, line, scatter plots | Practice
+- Day 19 — Heatmaps, boxplots | Practice
+- Day 20 — Find feature relationships | Build correlation matrix
+- Day 21 — IQR, Z-score | Practice
+- Day 22 — Create new columns | Test impact on SoH
+- Day 23 — Use sklearn | Identify top features
+- Day 24 — Final EDA notebook | Commit to GitHub
 
-🟩 PHASE 2 — Python EDA (Days 15–24)
-Day 15 — 03-06-2026 (Wed) | 9:30–10:30 AM: Setup + Upload CSV | 10:30–11:30 AM: Pandas basics
+### Phase 3 — Power BI (Days 25–31) | 7 sessions
+- Day 25 — Import cleaned CSV | Data model
+- Day 26 — Calculated columns | Measures
+- Day 27 — KPIs, fleet summary | Slicers
+- Day 28 — SoH analysis visuals | Drill-down
+- Day 29 — At-risk vehicles | Filters
+- Day 30 — Colors, formatting | Mobile view
+- Day 31 — Test all visuals | Export PDF
 
-Day 16 — 04-06-2026 (Thu) | 9:30–10:30 AM: Handle missing values | 10:30–11:30 AM: df.info(), df.describe()
+### Phase 4 — Documentation (Days 32–34) | 3 sessions
+- Day 32 — Write project overview | Add screenshots
+- Day 33 — Draft + visuals | Publish
+- Day 34 — Resume update | Project complete 🎉
 
-Day 17 — 05-06-2026 (Fri) | 9:30–10:30 AM: groupby, sort, filter | 10:30–11:30 AM: Practice
+---
 
-Day 18 — 06-06-2026 (Sat) | 9:30–10:30 AM: Bar, Line, Scatter plots | 10:30–11:30 AM: Practice
+## 📝 How This File Works
 
-— — 07-06-2026 (Sun) | 🛌 OFF — Rest Day
-
-Day 19 — 08-06-2026 (Mon) | 9:30–10:30 AM: Heatmaps, boxplots | 10:30–11:30 AM: Practice
-
-Day 20 — 09-06-2026 (Tue) | 9:30–10:30 AM: Find feature relationships | 10:30–11:30 AM: Build correlation matrix
-
-Day 21 — 10-06-2026 (Wed) | 9:30–10:30 AM: IQR, Z-score | 10:30–11:30 AM: Practice
-
-Day 22 — 11-06-2026 (Thu) | 9:30–10:30 AM: Create new columns | 10:30–11:30 AM: Test impact on SoH
-
-Day 23 — 12-06-2026 (Fri) | 9:30–10:30 AM: Use sklearn | 10:30–11:30 AM: Identify top features
-
-Day 24 — 13-06-2026 (Sat) | 9:30–10:30 AM: Final EDA notebook | 10:30–11:30 AM: Commit to GitHub
-
-🟨 PHASE 3 — Power BI (Days 25–31)
-— — 14-06-2026 (Sun) | 🛌 OFF — Rest Day
-
-Day 25 — 15-06-2026 (Mon) | 9:30–10:30 AM: Import cleaned CSV | 10:30–11:30 AM: Data model
-
-Day 26 — 16-06-2026 (Tue) | 9:30–10:30 AM: Calculated columns | 10:30–11:30 AM: Measures
-
-Day 27 — 17-06-2026 (Wed) | 9:30–10:30 AM: KPIs, fleet summary | 10:30–11:30 AM: Slicers
-
-Day 28 — 18-06-2026 (Thu) | 9:30–10:30 AM: SoH analysis visuals | 10:30–11:30 AM: Drill-down
-
-Day 29 — 19-06-2026 (Fri) | 9:30–10:30 AM: At-risk vehicles | 10:30–11:30 AM: Filters
-
-Day 30 — 20-06-2026 (Sat) | 9:30–10:30 AM: Colors, formatting | 10:30–11:30 AM: Mobile view
-
-— — 21-06-2026 (Sun) | 🛌 OFF — Rest Day
-
-Day 31 — 22-06-2026 (Mon) | 9:30–10:30 AM: Test all visuals | 10:30–11:30 AM: Export PDF
-
-🟥 PHASE 4 — Documentation (Days 32–34)
-Day 32 — 23-06-2026 (Tue) | 9:30–10:30 AM: Write project overview | 10:30–11:30 AM: Add screenshots
-
-Day 33 — 24-06-2026 (Wed) | 9:30–10:30 AM: Draft + visuals | 10:30–11:30 AM: Publish
-
-Day 34 — 25-06-2026 (Thu) | 9:30–10:30 AM: Resume update | 10:30–11:30 AM: Project complete 🎉
-
-📊 Summary
-Phase 1 — SQL: 14 days | 18 May – 02 Jun
-Phase 2 — Python: 10 days | 03 Jun – 13 Jun
-Phase 3 — Power BI: 7 days | 15 Jun – 22 Jun
-Phase 4 — Docs: 3 days | 23 Jun – 25 Jun
-TOTAL: 34 days (~5.5 weeks)
-🎯 Project Completion Date: 25-06-2026 (Thursday)
+- **Sequence, not calendar.** Days are numbered work sessions (Mon–Sat), not fixed dates.
+  Actual completion dates are recorded in **SQL_Notes.md** — the day-by-day diary.
+- **Each day = two sessions:** 9:30–10:30 AM learn | 10:30–11:30 AM practice + notes
+- **Completed work is compressed** into a summary line per milestone. Full detail stays in
+  SQL_Notes.md and git history — no duplication here.
+- Days 1–12 ran on the original calendar (18–30 May 2026). Later days continue from the
+  actual working date, so no stale dates accumulate in this file.
+- **Total: 34 sessions (Days 1–34)** across 4 phases.
